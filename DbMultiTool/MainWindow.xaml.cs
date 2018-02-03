@@ -24,5 +24,18 @@ namespace DbMultiTool
         {
             InitializeComponent();
         }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            string databaseName = textBox.Text;
+            string serverName = textBox_Copy.Text;
+            string userName = textBox_Copy1.Text;
+            string password = passwordBox.Password;
+
+            SqlEditor mainFrm = new SqlEditor();
+            this.Hide();
+            mainFrm.ShowDialog();
+            this.Close();
+        }
     }
 }
