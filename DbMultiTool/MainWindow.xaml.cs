@@ -27,17 +27,34 @@ namespace DbMultiTool
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string databaseName = textBox_Copy.Text;
-            string serverName = textBox.Text;
-            string userName = textBox_Copy1.Text;
-            string password = passwordBox.Password;
+            try
+            {
+                string databaseName = textBox_Copy.Text;
+                string serverName = textBox.Text;
+                string userName = textBox_Copy1.Text;
+                string password = passwordBox.Password;
 
-            DbConnection dbcon = new DbConnection(serverName, databaseName, userName, password);
+                using (DbConnection dbcon = new DbConnection(serverName, databaseName, userName, password)) { }
 
-            SqlEditor mainFrm = new SqlEditor();
-            this.Hide();
-            mainFrm.ShowDialog();
-            this.Close();
+                //SqlEditorのフォームを作成し、ShowDialogで呼び出す。
+                //ただ、そのまえにログイン画面はいらなくなるので、Hideで隠している。（オブジェクトは生きている）
+                //SqlEditorが閉じられたらこっちに制御が戻るので、戻って即Closeして全体終了。
+                SqlEditor mainFrm = new SqlEditor(serverName, databaseName, userName, password);
+                Hide();
+                mainFrm.ShowDialog();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                StringBuilder msgtxt = new StringBuilder();
+                msgtxt.Append(ex.Message);
+                if (ex.InnerException != null)
+                {
+                    msgtxt.Append(ex.InnerException.Message);
+                }
+
+                MessageBox.Show(msgtxt.ToString());
+            }
         }
     }
 }

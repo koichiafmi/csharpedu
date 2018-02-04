@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="SqlEditor" Height="611.905" Width="630.952">
     <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="226" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="603"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="330" Margin="10,241,0,0" VerticalAlignment="Top" Width="603"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="194" Margin="10,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="603"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="330" Margin="10,241,0,0" VerticalAlignment="Top" Width="603" ItemsSource="{Binding}" AutoGenerateColumns="True"/>
+        <Button x:Name="button" Content="実　行" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="111" Height="27" Click="button_Click"/>
 
     </Grid>
 </Window>
