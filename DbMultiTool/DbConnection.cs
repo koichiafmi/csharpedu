@@ -112,6 +112,14 @@ namespace DbMultiTool
         /// <returns>実行結果</returns>
         public DataSet ExecuteSql(string sql)
         {
+            if(string.IsNullOrWhiteSpace(sql))
+            {
+                throw new ApplicationException("クエリの実行に失敗しました。クエリが入力されていません。");
+            }else if(!sql.Trim().Substring(0, 5).ToUpper().Equals("SELECT"))
+            {
+                throw new NotSupportedException("SELECT文以外は未実装なので実行できません。");
+            }
+
             try
             {
                 //結果を格納するためのデータセット
