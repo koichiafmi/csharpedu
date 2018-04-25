@@ -16,22 +16,26 @@ namespace DbMultiTool
         /// <summary>
         /// commandクラス（実行クエリを保持したり、実行する。）
         /// </summary>
-        NpgsqlCommand _com;
+        private NpgsqlCommand _com;
         /// <summary>
         /// connectionクラス（データベースと接続する。）
         /// </summary>
-        NpgsqlConnection _con;
+        private NpgsqlConnection _con;
+        //private Action openMethod = _con.Open;
+
         /// <summary>
         /// dataadapter（非接続型のクエリ実行を行うのに必要）
         /// </summary>
-        NpgsqlDataAdapter _da;
+        private NpgsqlDataAdapter _da;
+        //private Func<DataSet, int> fillMethod = _da.Fill;
 
         //TODO:トランザクション処理はまだ未実装。
-        //NpgsqlTransaction _tran;
+        private NpgsqlTransaction _tran;
+
         /// <summary>
         /// 接続文字列作成クラス（パラメータがプロパティになっているので便利。）
         /// </summary>
-        NpgsqlConnectionStringBuilder _constr;
+        private NpgsqlConnectionStringBuilder _constr;
 
         /// <summary>
         /// データベース処理クラス
@@ -54,11 +58,13 @@ namespace DbMultiTool
             try
             {
                 //接続文字列の作成
-                _constr = new NpgsqlConnectionStringBuilder();
-                _constr.Host = server;
-                _constr.Database = database;
-                _constr.Username = user;
-                _constr.Password = password;
+                _constr = new NpgsqlConnectionStringBuilder
+                {
+                    Host = server,
+                    Database = database,
+                    Username = user,
+                    Password = password
+                };
 
                 //接続テスト
                 _con = new NpgsqlConnection(_constr.ConnectionString);
@@ -141,15 +147,29 @@ namespace DbMultiTool
             }
         }
 
-        //public void Commit()
-        //{
+        public NpgsqlDataReader ExecuteQuery(string sql)
+        {
+            return _com.ExecuteReader();
+        }
+        public int ExecuteNonQuery(string sql)
+        {
+            return _com.ExecuteNonQuery();
+        }
 
-        //}
+        public void BeginTransaction()
+        {
+            _tran = _con.BeginTransaction();
+        }
 
-        //public void RollBack()
-        //{
+        public void Commit()
+        {
+            _tran.Commit();
+        }
 
-        //}
+        public void RollBack()
+        {
+            _tran.Rollback();
+        }
 
         //アンマネージドクラスを多数使用するので、IDisposableをインタフェースにし、
         //それらのクラスを正しく確実に破棄できるようにした。
