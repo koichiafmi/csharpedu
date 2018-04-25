@@ -42,22 +42,22 @@ public class DataGridViewProgressBarColumn : DataGridViewTextBoxColumn
         }
         set
         {
-            if (this.Maximum == value)
+            if (Maximum == value)
             {
                 return;
             }
             //セルテンプレートの値を変更する
-            ((DataGridViewProgressBarCell)this.CellTemplate).Maximum = value;
+            ((DataGridViewProgressBarCell)CellTemplate).Maximum = value;
             //DataGridViewにすでに追加されているセルの値を変更する
-            if (this.DataGridView == null)
+            if (DataGridView == null)
             {
                 return;
             }
-            int rowCount = this.DataGridView.RowCount;
+            int rowCount = DataGridView.RowCount;
             for (int i = 0; i < rowCount; i++)
             {
-                DataGridViewRow r = this.DataGridView.Rows.SharedRow(i);
-                ((DataGridViewProgressBarCell)r.Cells[this.Index]).Maximum = value;
+                DataGridViewRow r = DataGridView.Rows.SharedRow(i);
+                ((DataGridViewProgressBarCell)r.Cells[Index]).Maximum = value;
             }
         }
     }
@@ -69,24 +69,24 @@ public class DataGridViewProgressBarColumn : DataGridViewTextBoxColumn
     {
         get
         {
-            return ((DataGridViewProgressBarCell)this.CellTemplate).Mimimum;
+            return ((DataGridViewProgressBarCell)CellTemplate).Mimimum;
         }
         set
         {
-            if (this.Mimimum == value)
+            if (Mimimum == value)
                 return;
             //セルテンプレートの値を変更する
-            ((DataGridViewProgressBarCell)this.CellTemplate).Mimimum = value;
+            ((DataGridViewProgressBarCell)CellTemplate).Mimimum = value;
             //DataGridViewにすでに追加されているセルの値を変更する
             if (this.DataGridView == null)
             {
                 return;
             }
-            int rowCount = this.DataGridView.RowCount;
+            int rowCount = DataGridView.RowCount;
             for (int i = 0; i < rowCount; i++)
             {
                 DataGridViewRow r = this.DataGridView.Rows.SharedRow(i);
-                ((DataGridViewProgressBarCell)r.Cells[this.Index]).Mimimum = value;
+                ((DataGridViewProgressBarCell)r.Cells[Index]).Mimimum = value;
             }
         }
     }
@@ -100,35 +100,11 @@ public class DataGridViewProgressBarCell : DataGridViewTextBoxCell
     //コンストラクタ
     public DataGridViewProgressBarCell()
     {
-        this.maximumValue = 100;
-        this.mimimumValue = 0;
+        Maximum = 100;
+        Mimimum = 0;
     }
-
-    private int maximumValue;
-    public int Maximum
-    {
-        get
-        {
-            return this.maximumValue;
-        }
-        set
-        {
-            this.maximumValue = value;
-        }
-    }
-
-    private int mimimumValue;
-    public int Mimimum
-    {
-        get
-        {
-            return this.mimimumValue;
-        }
-        set
-        {
-            this.mimimumValue = value;
-        }
-    }
+    public int Maximum { get; set; }
+    public int Mimimum { get; set; }
 
     //セルの値のデータ型を指定する
     //ここでは、整数型とする
@@ -154,8 +130,8 @@ public class DataGridViewProgressBarCell : DataGridViewTextBoxCell
     public override object Clone()
     {
         DataGridViewProgressBarCell cell = (DataGridViewProgressBarCell)base.Clone();
-        cell.Maximum = this.Maximum;
-        cell.Mimimum = this.Mimimum;
+        cell.Maximum = Maximum;
+        cell.Mimimum = Mimimum;
         return cell;
     }
 
@@ -174,33 +150,36 @@ public class DataGridViewProgressBarCell : DataGridViewTextBoxCell
         //値を決定する
         int intValue = 0;
         if (value is int)
+        {
             intValue = (int)value;
-        if (intValue < this.mimimumValue)
-            intValue = this.mimimumValue;
-        if (intValue > this.maximumValue)
-            intValue = this.maximumValue;
+        }
+        if (intValue < Mimimum)
+        {
+            intValue = Mimimum;
+        }
+        if (intValue > Maximum)
+        {
+            intValue = Maximum;
+        }
         //割合を計算する
-        double rate = (double)(intValue - this.mimimumValue) / (this.maximumValue - this.mimimumValue);
+        double rate = (double)(intValue - Mimimum) / (Maximum - Mimimum);
 
         //セルの境界線（枠）を描画する
         if ((paintParts & DataGridViewPaintParts.Border) == DataGridViewPaintParts.Border)
         {
-            this.PaintBorder(graphics, clipBounds, cellBounds,
-                cellStyle, advancedBorderStyle);
+            PaintBorder(graphics, clipBounds, cellBounds, cellStyle, advancedBorderStyle);
         }
 
         //境界線の内側に範囲を取得する
-        Rectangle borderRect = this.BorderWidths(advancedBorderStyle);
-        Rectangle paintRect = new Rectangle(
-            cellBounds.Left + borderRect.Left,
-            cellBounds.Top + borderRect.Top,
-            cellBounds.Width - borderRect.Right,
-            cellBounds.Height - borderRect.Bottom);
+        Rectangle borderRect = BorderWidths(advancedBorderStyle);
+        Rectangle paintRect = new Rectangle(cellBounds.Left + borderRect.Left,
+                                            cellBounds.Top + borderRect.Top,
+                                            cellBounds.Width - borderRect.Right,
+                                            cellBounds.Height - borderRect.Bottom);
 
         //背景色を決定する
         //選択されている時とされていない時で色を変える
-        bool isSelected =
-            (cellState & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected;
+        bool isSelected = (cellState & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected;
         Color bkColor;
         if (isSelected && (paintParts & DataGridViewPaintParts.SelectionBackground) == DataGridViewPaintParts.SelectionBackground)
         {
@@ -241,7 +220,6 @@ public class DataGridViewProgressBarCell : DataGridViewTextBoxCell
             else
             {
                 //visualスタイルで描画できない時
-
                 graphics.FillRectangle(Brushes.White, paintRect);
                 graphics.DrawRectangle(Pens.Black, paintRect);
                 Rectangle barBounds = new Rectangle(paintRect.Left + 1, paintRect.Top + 1, paintRect.Width - 1, paintRect.Height - 1);
@@ -251,10 +229,9 @@ public class DataGridViewProgressBarCell : DataGridViewTextBoxCell
         }
 
         //フォーカスの枠を表示する
-        if (this.DataGridView.CurrentCellAddress.X == this.ColumnIndex &&
-            this.DataGridView.CurrentCellAddress.Y == this.RowIndex &&
-            (paintParts & DataGridViewPaintParts.Focus) == DataGridViewPaintParts.Focus &&
-            this.DataGridView.Focused)
+        if (DataGridView.CurrentCellAddress.X == ColumnIndex &&
+            DataGridView.CurrentCellAddress.Y == RowIndex &&
+            (paintParts & DataGridViewPaintParts.Focus) == DataGridViewPaintParts.Focus && DataGridView.Focused)
         {
             //フォーカス枠の大きさを適当に決める
             Rectangle focusRect = paintRect;
@@ -287,14 +264,14 @@ public class DataGridViewProgressBarCell : DataGridViewTextBoxCell
 
         //エラーアイコンの表示
         if ((paintParts & DataGridViewPaintParts.ErrorIcon) == DataGridViewPaintParts.ErrorIcon &&
-            this.DataGridView.ShowCellErrors &&
+            DataGridView.ShowCellErrors &&
             !string.IsNullOrEmpty(errorText))
         {
             //エラーアイコンを表示させる領域を取得
-            Rectangle iconBounds = this.GetErrorIconBounds(graphics, cellStyle, rowIndex);
+            Rectangle iconBounds = GetErrorIconBounds(graphics, cellStyle, rowIndex);
             iconBounds.Offset(cellBounds.X, cellBounds.Y);
             //エラーアイコンを描画
-            this.PaintErrorIcon(graphics, iconBounds, cellBounds, errorText);
+            PaintErrorIcon(graphics, iconBounds, cellBounds, errorText);
         }
     }
 }
