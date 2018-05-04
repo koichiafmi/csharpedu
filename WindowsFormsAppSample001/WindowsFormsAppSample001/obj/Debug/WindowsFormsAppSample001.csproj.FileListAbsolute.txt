@@ -1,0 +1,9 @@
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\bin\Debug\WindowsFormsAppSample001.exe.config
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\bin\Debug\WindowsFormsAppSample001.exe
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\bin\Debug\WindowsFormsAppSample001.pdb
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\obj\Debug\WindowsFormsAppSample001.Form1.resources
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\obj\Debug\WindowsFormsAppSample001.Properties.Resources.resources
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\obj\Debug\WindowsFormsAppSample001.csproj.GenerateResource.cache
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\obj\Debug\WindowsFormsAppSample001.csproj.CoreCompileInputs.cache
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\obj\Debug\WindowsFormsAppSample001.exe
+C:\Users\hide\source\repos\csharpedu\WindowsFormsAppSample001\WindowsFormsAppSample001\obj\Debug\WindowsFormsAppSample001.pdb
