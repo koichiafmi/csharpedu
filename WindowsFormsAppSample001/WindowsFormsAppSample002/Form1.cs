@@ -15,16 +15,16 @@ namespace WindowsFormsAppSample002
 {
     public partial class Form1 : Form
     {
-        private String READ_FILE_USED_IN_VISUALBASIC_FILEIO = @"C:\Sample001\Sample002.csv";
-        private String READ_FILE_USED_IN_FILEIO = @"C:\Sample001\Sample002_5column10000rows.csv";
+        private String READ_FILE_USED_IN_VISUALBASIC_FILEIO = @"C:\Sample002\Sample002.csv";
+        private String READ_FILE_USED_IN_FILEIO = @"C:\Sample002\Sample002_5column10000rows.csv";
         //private String READ_FILE_USED_IN_FILEIO  = @"C:\Sample002_5column100rows.csv";
 
         private int READ_CSV_TEXTFIELDPARSER = 2; // Microsoft.VisualBasic.FileIO : dataGridViewに一行ずつADD
         private int READ_CSV_FILE_READLINES_DATAGRIDVIEW_ROWS_ADD_ONELINE = 0; // System.IO : dataGridViewに一行ずつADD
         private int READ_CSV_FILE_READLINES_DATAGRIDVIEW_ROWS_ADD_ALLLINE = 1; // System.IO : dataGridViewに一括ADD
 
-        private String READ_CSV_PERSONAL_INFOMATION = @"C:\Sample001\personal_infomation.csv";
-        private String READ_XML_PERSONAL_INFOMATION = @"C:\Sample001\personal_infomation.xml";
+        private String READ_CSV_PERSONAL_INFOMATION = @"C:\Sample002\personal_infomation.csv";
+        private String READ_XML_PERSONAL_INFOMATION = @"C:\Sample002\personal_infomation.xml";
 
         private int DEFAULT_DISPLAY = 1;
         private int FIRSTLINE_OF_CSV = 2;
