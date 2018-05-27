@@ -1,0 +1,11 @@
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\bin\Debug\Chart.exe.config
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\bin\Debug\Chart.exe
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\bin\Debug\Chart.pdb
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.csprojResolveAssemblyReference.cache
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.HearthLogger.resources
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.Form2.resources
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.Properties.Resources.resources
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.csproj.GenerateResource.Cache
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.csproj.CoreCompileInputs.cache
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.exe
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.pdb
