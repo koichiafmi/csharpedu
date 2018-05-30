@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace DbMultiTool
 {
@@ -47,12 +48,32 @@ namespace DbMultiTool
 
                 _dbCon.Open();
 
-                _result = _dbCon.ExecuteSql(textBox.Text);
+                Action<string> execute = (sql) =>
+                {
+                    if (sql.ToUpper().StartsWith(@"SELECT"))
+                    {
+                        _result = _dbCon.ExecuteSql(sql);
+                        this.dataGrid.DataContext = _result.Tables[0];
+                    }
+                    else
+                    {
+                        _dbCon.ExecuteSqlUsingTransaction(sql);
+                    }
+                };
 
-                //DataGridViewでいうところのDataSourceプロパティ
-                //これ以外にItemsSource="{Binding}" AutoGenerateColumns="True"
-                //する必要があるみたい。
-                this.dataGrid.DataContext = _result.Tables[0];
+                var matches = Regex.Matches(textBox.Text, "^.*;");
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                    {
+                        execute(match.Value);
+                    }
+                }
+                else
+                {
+                    execute(textBox.Text);
+                }
+
                 _dbCon.Dispose();
             }
             catch (Exception ex)

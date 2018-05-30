@@ -133,6 +133,26 @@ namespace DbMultiTool
             }
         }
 
+        public void ExecuteSqlUsingTransaction(string sql)
+        {
+            using (var transaction = _con.BeginTransaction())
+            {
+                //commandクラスにクエリとconnectionオブジェクトをつっこんでオブジェクトを生成している。
+                _com = new NpgsqlCommand(sql, _con);
+
+                try
+                {
+                    _com.ExecuteNonQuery();
+                    transaction.Commit();
+                }
+                catch (NpgsqlException e)
+                {
+                    transaction.Rollback();
+                    throw new ApplicationException("クエリ実行処理で例外が発生しました。", e);
+                }
+            }
+        }
+
         //public void Commit()
         //{
 

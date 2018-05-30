@@ -11,15 +11,15 @@
             <ColumnDefinition Width="141*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="label" Content="Server Name" HorizontalAlignment="Left" Margin="34,31,0,0" VerticalAlignment="Top" Height="26" Width="78"/>
-        <Label x:Name="label1" Content="Database Name" HorizontalAlignment="Left" Margin="18,68,0,0" VerticalAlignment="Top" Height="26" Width="94"/>
-        <Label x:Name="label2" Content="User Name" HorizontalAlignment="Left" Margin="43,103,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
-        <Label x:Name="label3" Content="Password" HorizontalAlignment="Left" Margin="52,134,0,0" VerticalAlignment="Top" Height="26" Width="60"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="117,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="117,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="117,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="52,192,0,0" VerticalAlignment="Top" Width="96" Height="39" Click="Login_Click"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="117,142,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label" Content="Server Name" HorizontalAlignment="Left" Margin="34,31,0,0" VerticalAlignment="Top" Height="26" Width="78" TabIndex="0"/>
+        <Label x:Name="label1" Content="Database Name" HorizontalAlignment="Left" Margin="18,68,0,0" VerticalAlignment="Top" Height="26" Width="94" TabIndex="2"/>
+        <Label x:Name="label2" Content="User Name" HorizontalAlignment="Left" Margin="43,103,0,0" VerticalAlignment="Top" Height="26" Width="69" TabIndex="4"/>
+        <Label x:Name="label3" Content="Password" HorizontalAlignment="Left" Margin="52,134,0,0" VerticalAlignment="Top" Height="26" Width="60" TabIndex="6"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="117,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="1"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="117,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="3"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="117,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="5"/>
+        <Button x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="52,192,0,0" VerticalAlignment="Top" Width="96" Height="39" Click="Login_Click" TabIndex="8" IsDefault="True"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="117,142,0,0" VerticalAlignment="Top" Width="120" TabIndex="7"/>
 
     </Grid>
 </Window>
