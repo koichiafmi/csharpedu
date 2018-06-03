@@ -107,12 +107,6 @@ namespace WindowsFormsAppSample003
                 int readCount = (int)pd.Result;
                 sw.Stop();
                 // 列名設定
-/*
-                if (checkBox2.Checked == true)
-                {
-                    Set_ColumnName();
-                }
-*/
                 this.dataGridView1.Rows.AddRange(Sample.sample.GetDataGridViewRow());
                 string message = string.Concat("経過時間[", lines, "行][ ", sw.Elapsed.Hours.ToString("00"), ":", sw.Elapsed.Minutes.ToString("00"), ":", sw.Elapsed.Seconds.ToString("00"), ":", sw.ElapsedMilliseconds.ToString("000"), " ]\r\nプログレスバーについて\r\n変更前のminValue値：", minValueBeforeChange, "変更後のminValue値：", minValueAfterChange, "\r\n変更前のmaxValue値：", maxnValueBeforeChange, "変更後のmaxValue値：", maxValueAfterChange);
                 textBox1.Text = message;
@@ -225,6 +219,15 @@ namespace WindowsFormsAppSample003
             // データをすべてクリア
             TextBox_Clear();
             progressBar1.Value = 0;
+            dataGridView1.RowsDefaultCellStyle.BackColor=Color.White;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Blue;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -698,11 +701,38 @@ namespace WindowsFormsAppSample003
             string readFile = obj.Key;
             //MessageBox.Show("comboBox-選択項目: " + readFile);
             Sample.sample.SetCsvfilePath(readFile);
+        }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if ( 0 == dataGridView1.RowCount)
+            {
+                MessageBox.Show("dataGridViewにデータを表示してください。");
+                return;
+            }
+            //ヘッダーを含まないすべてのセルの背景色をXXXにする
+            dataGridView1.RowsDefaultCellStyle.BackColor = DataGridViewObject.dataGridObj.getAllRowBackgroundColor();
+            //奇数行のセルの背景色をXXXにする
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = DataGridViewObject.dataGridObj.getOddRowBackgroundColor();
+            // 選択セルの背景色
+            dataGridView1.DefaultCellStyle.SelectionBackColor = DataGridViewObject.dataGridObj.getSelectionBackColor(); ;
+            //　選択セルの前景色
+            dataGridView1.DefaultCellStyle.SelectionForeColor = DataGridViewObject.dataGridObj.getSelectionForeColor(); ;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ColorSelectDialog f = new ColorSelectDialog();
+            //ここではモーダルダイアログボックスとして表示する
+            //オーナーウィンドウにthisを指定する
+            f.ShowDialog(this);
+            //フォームが必要なくなったところで、Disposeを呼び出す
+            f.Dispose();
         }
     }
 
     public partial class Sample
+
     {
         // メンバー変数の定義 ここから↓
         private DataGridViewRow[] x;
@@ -752,6 +782,7 @@ namespace WindowsFormsAppSample003
             return Value;
         }
     }
+
     // データクラス
     class DataGridViewObject
     {
@@ -761,7 +792,30 @@ namespace WindowsFormsAppSample003
         private string column4; // 実部を記憶しておく
         private string column5; // 実部を記憶しておく
 
+        private Color allRowBackgroundColor; // 全体行の背景色
+        private Color oddRowBackgroundColor; // 奇数行の背景色
+        private Color selectedrowBackgroundColor; // 指定行の背景色
+        private Color selectionBackColor;
+        private Color selectionForeColor;
+
+
         internal static readonly DataGridViewObject dataGridObj = new DataGridViewObject();
+
+        public Color getAllRowBackgroundColor() { return allRowBackgroundColor; }
+        public void setAllRowBackgroundColor(Color x) { this.allRowBackgroundColor = x; }
+
+        public Color getOddRowBackgroundColor() { return oddRowBackgroundColor; }
+        public void setOddRowBackgroundColor(Color x) { this.oddRowBackgroundColor = x; }
+
+        public Color getSelectedrowBackgroundColor() { return selectedrowBackgroundColor; }
+        public void setSelectedrowBackgroundColor(Color x) { this.selectedrowBackgroundColor = x; }
+
+        public Color getSelectionBackColor() { return selectionBackColor; }
+        public void setSelectionBackColor(Color x) { this.selectionBackColor = x; }
+
+        public Color getSelectionForeColor() { return selectionForeColor; }
+        public void setSelectionForeColor(Color x) { this.selectionForeColor = x; }
+
 
 
         public string Column1() { return column1; }

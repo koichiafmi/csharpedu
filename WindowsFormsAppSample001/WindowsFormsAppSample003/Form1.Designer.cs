@@ -42,17 +42,21 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,7 +164,7 @@
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Location = new System.Drawing.Point(161, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(221, 128);
+            this.groupBox2.Size = new System.Drawing.Size(221, 87);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "外部クラス作成";
@@ -183,6 +187,16 @@
             this.button6.Text = "B-2";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(266, 121);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 27);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "背景色";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button3
             // 
@@ -228,6 +242,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button9);
+            this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(387, 162);
@@ -235,11 +251,21 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "CSV読込(Display ProgressBar)";
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(153, 122);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(107, 26);
+            this.button9.TabIndex = 3;
+            this.button9.Text = "背景色選択";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(674, 114);
+            this.button4.Location = new System.Drawing.Point(617, 113);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 27);
+            this.button4.Size = new System.Drawing.Size(77, 27);
             this.button4.TabIndex = 19;
             this.button4.Text = "初期化";
             this.button4.UseVisualStyleBackColor = true;
@@ -262,11 +288,22 @@
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(300, 19);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(700, 112);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(68, 27);
+            this.button11.TabIndex = 21;
+            this.button11.Text = "色クリア";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 450);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.progressBar1);
@@ -281,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -312,6 +350,9 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button9;
     }
 }
 
