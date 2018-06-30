@@ -65,7 +65,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataGridViewProgressBarColumn.cs" />
     <Compile Include="GantChart.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -10,39 +10,22 @@ namespace DbMultiTool
         {
             InitializeComponent();
 
-            DataGridViewProgressBarColumn pbColumn1 = new DataGridViewProgressBarColumn
-            {
-                DataPropertyName = "Column1",
-                HeaderText = "4/1"
-            };
-            dataGridView2.Columns.Add(pbColumn1);
+            //DataGridViewProgressBarColumn pbColumn1 = new DataGridViewProgressBarColumn
+            ////DgvMergebleTextBoxColumn pbColumn1 = new DgvMergebleTextBoxColumn
+            //{
+            //    DataPropertyName = "Column1",
+            //    HeaderText = "4/1"
+            //};
+            //dataGridView2.Columns.Add(pbColumn1);
 
-            dataGridView2.Columns.Add("col2", "4/2");
-            dataGridView2.Columns.Add("col3", "4/3");
-            dataGridView2.Columns.Add("col4", "4/4");
-            dataGridView2.Columns.Add("col5", "4/5");
-            dataGridView2.Columns.Add("col6", "4/6");
-            dataGridView2.Columns.Add("col7", "4/7");
 
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
-            dataGridView2.Rows.Add();
+            //dataGridView2.Columns.Add("col2", "4/2");
+            //dataGridView2.Columns.Add("col3", "4/3");
+            //dataGridView2.Columns.Add("col4", "4/4");
+            //dataGridView2.Columns.Add("col5", "4/5");
+            //dataGridView2.Columns.Add("col6", "4/6");
+            //dataGridView2.Columns.Add("col7", "4/7");
+
         }
 
         private void GantChart_Load(object sender, EventArgs e)
@@ -68,6 +51,17 @@ namespace DbMultiTool
             dataGridView1.Rows.Add();
             dataGridView1.Rows.Add();
             dataGridView1.Rows.Add();
+
+            dataGridView2.Columns.Add("4/1", "4/1");
+            dataGridView2.Columns.Add("4/2", "4/2");
+            dataGridView2.Columns.Add("4/3", "4/3");
+            dataGridView2.Columns.Add("4/4", "4/4");
+
+            for (int i = 0; i < 10; i++)
+            {
+                dataGridView2.Rows.Add(25, 25, 25, 25);
+            }
+
         }
 
         private void dataGridView2_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -80,47 +74,237 @@ namespace DbMultiTool
             }
 
             Rectangle rect;
-            DataGridViewCell cell;
-            // 1列目の処理
-            if (e.ColumnIndex == 0)
+            switch (e.RowIndex)
             {
-                // 奇数行のみ列結合
-                if (e.RowIndex % 2 == 0)
-                {
-                    rect = e.CellBounds;
-                    cell = dv[e.ColumnIndex + 1, e.RowIndex];
-                    // 一つ右のセルの幅を足す
-                    rect.Width += cell.Size.Width;
-                    rect.X -= 1;
-                    rect.Y -= 1;
-                    e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
-                    e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
-                    ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
-                    e.Handled = true;
-                }
-                else
-                {
-                    // ２列目の偶数行は、結合を行わないので、通常の描画処理に任せる
+                case 0:
+                    //1列目のみ
+                    if (e.ColumnIndex == 0)
+                    {
+                        rect = e.CellBounds;
+                        //rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 1:
+                    //1列目と2列目を結合してみる
+                    if (e.ColumnIndex == 0)
+                    {
+                        rect = e.CellBounds;
+                        rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 2:
+                    //1列目と2列目と3列目を結合してみる
+                    if (e.ColumnIndex == 0)
+                    {
+                        rect = e.CellBounds;
+                        rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 3:
+                    //1列目と2列目と3列目と4列目を結合してみる
+                    if (e.ColumnIndex == 0)
+                    {
+                        rect = e.CellBounds;
+                        rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 4:
+                    //2列目のみ
+                    if (e.ColumnIndex == 1)
+                    {
+                        rect = e.CellBounds;
+                        //rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 5:
+                    //2列目と3列目を結合してみる
+                    if (e.ColumnIndex == 1)
+                    {
+                        rect = e.CellBounds;
+                        rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 6:
+                    //2列目と3列目と4列目を結合してみる
+                    if (e.ColumnIndex == 1)
+                    {
+                        rect = e.CellBounds;
+                        rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 7:
+                    //3列目のみ
+                    if (e.ColumnIndex == 2)
+                    {
+                        rect = e.CellBounds;
+                        //rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                case 8:
+                    //3列目と4列目を結合してみる
+                    if (e.ColumnIndex == 2)
+                    {
+                        rect = e.CellBounds;
+                        rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
+                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
+                        rect.X -= 1;
+                        rect.Y -= 1;
+                        e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
+                        e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
+                        //プログレスバー（後ろの灰色部分）レンダリング
+                        ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
+                        //プログレスバー（緑色の実績部分）レンダリング
+                        rect.Width = rect.Width * ((int)e.Value) / 100;
+                        ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
+                        e.Handled = true;
+                    }
+                    break;
+                default:
+                    // 通常の描画処理
                     e.Paint(e.ClipBounds, e.PaintParts);
-                }
-            }
-            else if(e.ColumnIndex == 2)
-            {
-                rect = e.CellBounds;
-                cell = dv[e.ColumnIndex + 1, e.RowIndex];
-                // 一つ右のセルの幅を足す
-                rect.Width += cell.Size.Width;
-                rect.X -= 1;
-                rect.Y -= 1;
-                e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
-                e.Graphics.DrawRectangle(new Pen(dv.GridColor), rect);
-                TextRenderer.DrawText(e.Graphics,
-                                      e.FormattedValue.ToString(),
-                                      e.CellStyle.Font, 
-                                      rect, 
-                                      e.CellStyle.ForeColor,
-                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
-                e.Handled = true;
+                    break;
             }
         }
     }
