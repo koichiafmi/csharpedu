@@ -14,5 +14,11 @@ namespace DbMultiTool
         {
 
         }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var testProxy = new MethodBaseProxy<AopTestClass>(1, 1).GetInstance();
+            testProxy.GetOutPut();
+        }
     }
 }
