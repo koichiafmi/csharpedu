@@ -74,7 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AopTestClass.cs" />
+    <Compile Include="ModelPpoiClass.cs" />
     <Compile Include="GantChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
