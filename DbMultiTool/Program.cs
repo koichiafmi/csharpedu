@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DbMultiTool
@@ -16,7 +13,15 @@ namespace DbMultiTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NSProject_Main());
+
+
+            NSProject_Main mainForm = new NSProject_Main();
+
+            //スプラッシュウィンドウを表示
+            SplashForm.ShowSplash(mainForm);
+
+            //メインウィンドウを表示
+            Application.Run(mainForm);
         }
     }
 }
