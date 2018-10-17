@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMultiTool", "DbMultiTool\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{2DFB93EA-B3B5-476C-8D2E-3FD8F60BD84E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp2", "WindowsFormsApp2\WindowsFormsApp2.csproj", "{8250A54C-E9B1-4D34-A7D5-B79FB9D0AF1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2DFB93EA-B3B5-476C-8D2E-3FD8F60BD84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DFB93EA-B3B5-476C-8D2E-3FD8F60BD84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DFB93EA-B3B5-476C-8D2E-3FD8F60BD84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8250A54C-E9B1-4D34-A7D5-B79FB9D0AF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8250A54C-E9B1-4D34-A7D5-B79FB9D0AF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8250A54C-E9B1-4D34-A7D5-B79FB9D0AF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8250A54C-E9B1-4D34-A7D5-B79FB9D0AF1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
