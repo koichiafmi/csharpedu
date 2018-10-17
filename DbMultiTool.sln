@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMultiTool", "DbMultiTool\DbMultiTool.csproj", "{89C31296-F247-45E9-BBAE-30E24359EF9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbtoolExt", "DbtoolExt\DbtoolExt.csproj", "{F6DC184E-9DA2-4696-9D39-708BC0D92D57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{89C31296-F247-45E9-BBAE-30E24359EF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89C31296-F247-45E9-BBAE-30E24359EF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89C31296-F247-45E9-BBAE-30E24359EF9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DC184E-9DA2-4696-9D39-708BC0D92D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DC184E-9DA2-4696-9D39-708BC0D92D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DC184E-9DA2-4696-9D39-708BC0D92D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DC184E-9DA2-4696-9D39-708BC0D92D57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
