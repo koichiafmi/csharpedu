@@ -9,3 +9,4 @@ C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Ch
 C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.csproj.CoreCompileInputs.cache
 C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.exe
 C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.pdb
+C:\Users\sunkenship\Desktop\C#勉強会\csharpedu\Chart\Chart\Chart\obj\Debug\Chart.Calendar.resources

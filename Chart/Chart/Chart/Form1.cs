@@ -13,6 +13,14 @@ namespace Chart
 {
     public partial class HearthLogger : Form
     {
+        public string SetData
+        {
+            set
+            {
+                Date.Text = value;
+            }
+        }
+ 
         public HearthLogger()
         {
             InitializeComponent();
@@ -22,7 +30,7 @@ namespace Chart
         {
             double weight;
             double fat;
-            if (double.TryParse(Date.Text, out weight) == true &&
+            if (double.TryParse(Weight.Text, out weight) == true &&
                 double.TryParse(Fat.Text, out fat) == true)
             {
                 using (StreamWriter writer = new StreamWriter("data.txt", true))
@@ -52,8 +60,14 @@ namespace Chart
 
         private void HearthLogger_Load(object sender, EventArgs e)
         {   //Form1が開いたときの動作
-            DateTime dt = DateTime.Now;　//dtに今日の日付（と現在時刻）
-            Date.Text = dt.ToString("yyyy-MM-dd");  //textboxに文字列として"dt"をyyyy-mm-ddの日付形式で
+            DateTime dt = DateTime.Now;
+            Date.Text = dt.ToString("yyyy/MM/dd");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Calendar carender = new Calendar();
+            carender.Show();
         }
     }
 }
