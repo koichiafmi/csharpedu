@@ -81,9 +81,6 @@ namespace DbMultiTool
                     if (e.ColumnIndex == 0)
                     {
                         rect = e.CellBounds;
-                        //rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -97,8 +94,8 @@ namespace DbMultiTool
                     }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 1:
@@ -107,8 +104,6 @@ namespace DbMultiTool
                     {
                         rect = e.CellBounds;
                         rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -120,10 +115,14 @@ namespace DbMultiTool
                         ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
                         e.Handled = true;
                     }
+                    else if (e.ColumnIndex == 1)
+                    {
+                        e.Handled = true;
+                    }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 2:
@@ -133,7 +132,6 @@ namespace DbMultiTool
                         rect = e.CellBounds;
                         rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
                         rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -145,10 +143,14 @@ namespace DbMultiTool
                         ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
                         e.Handled = true;
                     }
+                    else if (e.ColumnIndex == 1 || e.ColumnIndex == 2)
+                    {
+                        e.Handled = true;
+                    }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 3:
@@ -170,10 +172,14 @@ namespace DbMultiTool
                         ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
                         e.Handled = true;
                     }
+                    else if (e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3)
+                    {
+                        e.Handled = true;
+                    }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 4:
@@ -181,9 +187,6 @@ namespace DbMultiTool
                     if (e.ColumnIndex == 1)
                     {
                         rect = e.CellBounds;
-                        //rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -197,8 +200,8 @@ namespace DbMultiTool
                     }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 5:
@@ -207,8 +210,6 @@ namespace DbMultiTool
                     {
                         rect = e.CellBounds;
                         rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -220,10 +221,14 @@ namespace DbMultiTool
                         ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
                         e.Handled = true;
                     }
+                    else if (e.ColumnIndex == 2)
+                    {
+                        e.Handled = true;
+                    }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 6:
@@ -233,7 +238,6 @@ namespace DbMultiTool
                         rect = e.CellBounds;
                         rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
                         rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -245,10 +249,14 @@ namespace DbMultiTool
                         ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
                         e.Handled = true;
                     }
+                    else if(e.ColumnIndex == 2 || e.ColumnIndex == 3)
+                    {
+                        e.Handled = true;
+                    }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 7:
@@ -256,9 +264,6 @@ namespace DbMultiTool
                     if (e.ColumnIndex == 2)
                     {
                         rect = e.CellBounds;
-                        //rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -272,8 +277,8 @@ namespace DbMultiTool
                     }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 case 8:
@@ -282,8 +287,6 @@ namespace DbMultiTool
                     {
                         rect = e.CellBounds;
                         rect.Width += dv[e.ColumnIndex + 1, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 2, e.RowIndex].Size.Width;
-                        //rect.Width += dv[e.ColumnIndex + 3, e.RowIndex].Size.Width;
                         rect.X -= 1;
                         rect.Y -= 1;
                         e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect);
@@ -295,14 +298,19 @@ namespace DbMultiTool
                         ProgressBarRenderer.DrawHorizontalChunks(e.Graphics, rect);
                         e.Handled = true;
                     }
+                    else if (e.ColumnIndex == 3)
+                    {
+                        e.Handled = true;
+                    }
                     else
                     {
-                        //上記以外は描画処理を行わずにイベントハンドラ内で処理を完了したこと通知
-                        e.Handled = true;
+                        dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
+                        e.Paint(e.ClipBounds, e.PaintParts);
                     }
                     break;
                 default:
                     // 通常の描画処理
+                    dv[e.ColumnIndex, e.RowIndex].Value = string.Empty;
                     e.Paint(e.ClipBounds, e.PaintParts);
                     break;
             }
