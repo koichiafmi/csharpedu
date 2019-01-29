@@ -15,13 +15,15 @@ namespace DbMultiTool
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            NSProject_Main mainForm = new NSProject_Main();
+            Application.Run(new accord.AccordForm());
 
-            //スプラッシュウィンドウを表示
-            SplashForm.ShowSplash(mainForm);
+            //NSProject_Main mainForm = new NSProject_Main();
 
-            //メインウィンドウを表示
-            Application.Run(mainForm);
+            ////スプラッシュウィンドウを表示
+            //SplashForm.ShowSplash(mainForm);
+
+            ////メインウィンドウを表示
+            //Application.Run(mainForm);
         }
     }
 }
