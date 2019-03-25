@@ -15,10 +15,17 @@ using System.Windows.Forms.Integration;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+//https://qiita.com/PeppermintJinro/items/344ed5772256b5aeb667 ←パクリ元
+//https://www.ipentec.com/document/csharp-accord-net-create-simple-classification ←参考になりそう
+//http://accord-framework.net/docs/html/R_Project_Accord_NET.htm　←本家
+//http://d.hatena.ne.jp/n_hidekey/20111120/1321803326 ←bovwで参考にした
+//http://puni-o.hatenablog.com/category/C%23?page=1458122455 ←ここも参考になりそう
+//https://ai-kenkyujo.com/2017/03/29/machine-learning-2/ ←ここも入門編としてよさそう
 namespace DbMultiTool.accord
 {
     public partial class AccordForm : Form
     {
+        #region 大事なものもあるが一旦どうでもいい
         public AccordForm()
         {
             InitializeComponent();
@@ -39,16 +46,22 @@ namespace DbMultiTool.accord
             StartLearning();
         }
 
-        private MediaPlayer mediaPlayer = new MediaPlayer();
-        private List<ImageItem> itemList = new List<ImageItem>();
+        //private MediaPlayer mediaPlayer = new MediaPlayer();
         private string directoryPath = ConfigurationManager.AppSettings["directoryPath"].ToString();
-        private int codeWordCount = 200;
-        private BagOfVisualWords bagofVW;
-        private int classes = 3;
-        private MulticlassSupportVectorMachine<ChiSquare> msvm;
-
         private ElementHost elementHost3;
         private InkCanvas inkCanvas;
+        #endregion
+
+        //画像を数値化するときの特徴点抽出件数。たぶんこの数値を上げれば精度が高くなるが、処理時間もきっとマシマシ。
+        private int codeWordCount = 200;
+        //いぬ、ねこ、とりの３つ
+        private int classes = 3;
+        //↓この３つのオブジェクトが全てのカギを握っている。【超重要】
+        private List<ImageItem> itemList = new List<ImageItem>();
+        private BagOfVisualWords bagofVW;
+        private MulticlassSupportVectorMachine<ChiSquare> msvm;
+
+        #region 気にしなくていいところ
 
         #region イベント
         private void AccordForm_Load(object sender, EventArgs e)
@@ -73,17 +86,67 @@ namespace DbMultiTool.accord
         }
         #endregion
 
+        #endregion
+
+        #region 超絶重要！！！
+
         // 学習を開始する
         private void StartLearning()
         {
             var catsCreator = new ItemsFactory("cats", directoryPath, itemList, 0);
             var birdsCreator = new ItemsFactory("birds", directoryPath, itemList, 1);
             var dogsCreator = new ItemsFactory("dogs", directoryPath, itemList, 2);
+            //BagOfVisualWords
+            /*
+             * Bag of visual words (BoVW)は、一般物体認識において現在最も広く普及している画像特徴表現で、
+             * 画像中の多数の局所特徴をベクトル量子化しヒストグラムにしたものです。
+             */
             bagofVW = new TrainFactory(codeWordCount, bagofVW, itemList).bagofVW;
 
             var inputs = new InputFactory(itemList).input;
             var outputs = new OutputFactory(itemList).output;
 
+            //サポートベクターマシンのクラスを作成します。MulticlassSupportVectorMachineクラスを作成します。
+            //入力数は不定なので、コンストラクタの第一引数は0を与えます。
+            //サポートベクターマシンのカーネル(カーネル関数)は、ChiSquare(カイ二乗検定)を利用する。
+            //今回判定するクラスは3つのため、サポートベクタマシンのクラスには3を与えます。
+            /*
+             *[サポートベクターマシン (SVM)]
+             *単純パーセプトロンにマージン最大化を加えて教師ありデータを線形に2値分類する。
+             *数値データより、カテゴリーデータの扱いに長けており基本的には線形の分離ができるが、
+             *カーネル関数を使用することで次元を増やし、非線形の分離ができるようになっている。
+             *多クラス分類をする場合は、1対他分類法または1対1分類法を使用する(複数のSVMを組み合わせる)ことで対応する。
+             *通常のハードマージンSVMはノイズの影響を受けやすいため、ノイズにペナルティを課して
+             *マージン幅を調整するソフトマージンSVMにより、ノイズに影響を受けづらくすることが出来る。
+             */
+            /*
+             *[パーセプトロン]
+             *パーセプトロンとは、人工ニューロンやニューラルネットワークの一種である。
+             *入力層と出力層を持ち、パラメータを学習によって決められるが、中間層がなく
+             *線形分離不可能な問題が解けなかったため「単純パーセプトロン」とも呼ばれる。 
+             */
+            /*
+             * [カイ二乗検定]
+             * https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%A4%E4%BA%8C%E4%B9%97%E6%A4%9C%E5%AE%9A
+             * カイ二乗検定（カイにじょうけんてい、カイじじょうけんてい、英: Chi-squared test）、またはχ 2
+             * {\displaystyle \chi ^{2}}  \chi ^{2}検定とは、帰無仮説が正しければ検定統計量が漸近的にカイ二乗分布に
+             * 従うような統計的検定法の総称である。
+             */
+            /*
+             * msvmの構成　※あやしさ満載※
+             * msvm[MulticlassSupportVectorMachine<ChiSquare>]
+             * 　├teacher
+             * 　│  ├Learner[SequentialMinimalOptimization<ChiSquare>]
+             * 　│  │ ├UseComplexityHeuristic = true
+             * 　│  │ └UseKernelEstimation = true
+             * 　│  └Learn(inputs, outputs)
+             * 　└calibration(?)
+             * 　
+             * calibration[MulticlassSupportVectorMachine<ChiSquare>]
+             * 　├Model=msvm
+             * 　└Learner[ProbabilisticOutputCalibration<ChiSquare>]
+             * 　    └Model=msvmのparam(?)
+             */
             msvm = new MulticlassSupportVectorMachine<ChiSquare>(0, new ChiSquare(), classes);
 
             // 学習アルゴリズムを作成する
@@ -98,6 +161,31 @@ namespace DbMultiTool.accord
 
             msvm = teacher.Learn(inputs, outputs);
 
+            #region ここでinputsとoutputsの中身を見てみたい。
+            Console.WriteLine("============== inputs DEBUG START  ==============");
+            int i = 0;
+            int j = 0;
+            foreach (var item1 in inputs)
+            {
+                foreach (var item2 in item1)
+                {
+                    Console.WriteLine("inputs[" + i.ToString() + "][" + j.ToString() + "]:" + item2);
+                    ++j;
+                }
+                ++i;
+            }
+            Console.WriteLine("============== inputs DEBUG END    ==============");
+            Console.WriteLine("============== outputs DEBUG START ==============");
+            i = 0;
+            foreach (var item1 in outputs)
+            {
+                Console.WriteLine("outputs[" + i.ToString() + "]:" + item1);
+                ++i;
+            }
+            Console.WriteLine("============== outputs DEBUG END   ==============");
+            #endregion
+
+            //calibration＝【較正・校正】 《名・ス他》計器類の狂い・精度を、標準器と比べて正すこと。
             var calibration = new MulticlassSupportVectorLearning<ChiSquare>()
             {
                 Model = msvm,
@@ -118,12 +206,15 @@ namespace DbMultiTool.accord
         {
             Bitmap bitmap = new BitmapFactory(inkCanvas).bitmap;
 
+            //bagofVWを使用して描いた絵を数値化する。
             double[] codeword = bagofVW.Transform(bitmap);
-            int classResult = msvm.Decide(codeword);
+            //学習したアルゴリズムに数値化した絵をぶつけて何の絵かを判断する。
+            int classResult = 9;
+            classResult = msvm.Decide(codeword);
 
             textBox1.Text = "Result:" + Convert.ToString(classResult) + "\r\n";
 
-            String cryStr;
+            string cryStr;
 
             if (classResult == 0)
             {
@@ -134,19 +225,22 @@ namespace DbMultiTool.accord
             {
                 cryStr = "こけこっこー";
             }
-            else
+            else if (classResult == 2)
             {
                 cryStr = "わんわん";
             }
+            else
+            {
+                cryStr = "もういやだ・・・。帰りたいよぉ・・・（泣き声）";
+            }
 
             System.Windows.MessageBox.Show(cryStr);
-            //Uri cryFile = new Uri(cryStr);
-            //mediaPlayer.Open(cryFile);
-            //mediaPlayer.Play();
 
             FeedBack();
         }
+        #endregion
 
+        #region 重要そうだがさして重要ではない
         //フィードバック
         private void FeedBack()
         {
@@ -188,7 +282,9 @@ namespace DbMultiTool.accord
             //再学習
             StartLearning();
         }
+        #endregion
 
+        #region あまりおもしろくないところ
         // InkCanvasを画像として保存する
         private void SaveImage(string file)
         {
@@ -211,17 +307,20 @@ namespace DbMultiTool.accord
             if (enc != null)
             {
                 enc.Frames.Add(BitmapFrame.Create(rtb));
-                System.IO.Stream stream = System.IO.File.Create(file);
+                Stream stream = File.Create(file);
                 enc.Save(stream);
                 stream.Close();
             }
-
         }
+        #endregion
+
+        #region 具体的な処理はさして重要ではない
 
         #region BitmapFactoryクラス
-        //　InkCanvasをBitMapで返す
+        //　InkCanvasをBitMapで返す。
         internal class BitmapFactory
         {
+            //画像解析するときはこのbitmapを使用している。
             public Bitmap bitmap;
             private InkCanvas inkCanvas;
 
@@ -238,13 +337,13 @@ namespace DbMultiTool.accord
                     dc.DrawRectangle(vb, null, new Rect(new System.Windows.Point(), new System.Windows.Size(width, height)));
                 }
                 bmpCopied.Render(dv);
-                System.Drawing.Bitmap bitmap;
+                Bitmap bitmap;
                 using (MemoryStream outStream = new MemoryStream())
                 {
                     BitmapEncoder enc = new BmpBitmapEncoder();
                     enc.Frames.Add(BitmapFrame.Create(bmpCopied));
                     enc.Save(outStream);
-                    bitmap = new System.Drawing.Bitmap(outStream);
+                    bitmap = new Bitmap(outStream);
                 }
 
                 this.bitmap = bitmap;
@@ -252,10 +351,15 @@ namespace DbMultiTool.accord
         }
         #endregion
 
+        #endregion
+
+        #region スーパー重要！！
+
         #region InputFactoryクラス
         //　学習用インプットデータを作成する
         internal class InputFactory
         {
+            //これを作成する
             public double[][] input;
 
             public InputFactory(List<ImageItem> list)
@@ -276,6 +380,7 @@ namespace DbMultiTool.accord
         //　学習用アウトプットデータを作成する
         internal class OutputFactory
         {
+            //これを作成する
             public int[] output;
 
             public OutputFactory(List<ImageItem> list)
@@ -296,6 +401,7 @@ namespace DbMultiTool.accord
         //　訓練用インプットデータを作成する
         internal class TrainFactory
         {
+            //これを作成する
             public BagOfVisualWords bagofVW;
 
             public TrainFactory(int codeWordCount, BagOfVisualWords bagofVW, List<ImageItem> itemList)
@@ -314,6 +420,7 @@ namespace DbMultiTool.accord
 
                 foreach (ImageItem item in itemList)
                 {
+                    //画像解析して数値化した値をcodeWordにセット。この値をInputFactoryで使用している。
                     item.codeWord = bagofVW.Transform(item.bmp);
                 }
 
@@ -327,6 +434,7 @@ namespace DbMultiTool.accord
         internal class ItemsFactory
         {
             private string directoryPath;
+            //itemListを作成することが重要
             private List<ImageItem> itemList;
 
             public ItemsFactory(string animalName, string directoryPath, List<ImageItem> itemList, int classNum)
@@ -334,26 +442,25 @@ namespace DbMultiTool.accord
                 this.directoryPath = directoryPath;
                 this.itemList = itemList;
 
-                List<String> list = new List<String>();
+                List<string> list = new List<string>();
 
-                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(Path.Combine(directoryPath, animalName));
-                IEnumerable<System.IO.FileInfo> files =
-                    di.EnumerateFiles("*", System.IO.SearchOption.AllDirectories);
+                DirectoryInfo di = new DirectoryInfo(Path.Combine(directoryPath, animalName));
+                IEnumerable<FileInfo> files = di.EnumerateFiles("*", SearchOption.AllDirectories);
 
                 //ファイルを列挙する
-                foreach (System.IO.FileInfo f in files)
+                foreach (FileInfo f in files)
                 {
                     list.Add(f.FullName);
                 }
 
-                foreach (String fileName in list)
+                foreach (string fileName in list)
                 {
                     ImageItem ii;
                     ii = new ImageItem();
                     ii.FileName = fileName;
                     FileStream fs;
                     fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                    Bitmap source = (Bitmap)System.Drawing.Bitmap.FromStream(fs);
+                    Bitmap source = (Bitmap)System.Drawing.Image.FromStream(fs);
                     fs.Close();
                     ii.bmp = new Bitmap(source);
                     ii.Classification = classNum;
@@ -363,18 +470,29 @@ namespace DbMultiTool.accord
         }
         #endregion
 
-        #region ImageItemクラス
+        #region ImageItemクラス　地味に重要
         /// <summary>
         /// 学習に利用する画像データ
+        /// ItemsFactoryクラスで作成する。
+        /// TrainFactoryクラスでBagOfVisualWordsとcodeWordを作成するために必要（bmp）
+        /// InputFactoryクラスの構成要素（codeWord）
+        /// OutputFactoryクラスの構成要素（Classification）
         /// </summary>
         internal class ImageItem
         {
-            public String FileName;
+            //ファイル名
+            public string FileName;
+            //画像データ
             public Bitmap bmp;
+            //なんのデータか（いぬかねこかとりか）を識別する値
             public int Classification;
+            //画像を識別して数値化したデータ
             public double[] codeWord;
+            //コンストラクタ
             public ImageItem(){}
         }
+        #endregion
+
         #endregion
     }
 }
