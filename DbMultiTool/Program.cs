@@ -15,7 +15,7 @@ namespace DbMultiTool
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            Application.Run(new accord.AccordForm());
+            Application.Run(new AngleSharp.AngleSharpMain());
 
             //NSProject_Main mainForm = new NSProject_Main();
 
