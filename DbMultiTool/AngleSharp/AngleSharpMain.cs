@@ -28,8 +28,12 @@ namespace DbMultiTool.AngleSharp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Task.Run(() => KabuAsync());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
             Task.Run(() => ShosekiAsync());
-            Task.Run(() => HogeAsync());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,7 +68,7 @@ namespace DbMultiTool.AngleSharp
             Task.Run(() => BaseBallPitcherAsync2("376", "楽天"));
         }
 
-        private async Task HogeAsync()
+        private async Task KabuAsync()
         {
             // 株価を取得したいサイトのURL
             var code = "4641.T";
