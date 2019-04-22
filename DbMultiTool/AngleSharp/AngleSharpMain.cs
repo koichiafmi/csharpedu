@@ -26,9 +26,13 @@ namespace DbMultiTool.AngleSharp
             InitializeComponent();
         }
 
-        public BindingSource sinkanData;
-
         private void button1_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => ShosekiAsync());
+            Task.Run(() => HogeAsync());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             Task.Run(() => BaseBallFielderAsync2("1", "巨人"));
             Task.Run(() => BaseBallFielderAsync2("2", "ヤクルト"));
@@ -42,10 +46,10 @@ namespace DbMultiTool.AngleSharp
             Task.Run(() => BaseBallFielderAsync2("11", "オリックス"));
             Task.Run(() => BaseBallFielderAsync2("12", "ソフトバンク"));
             Task.Run(() => BaseBallFielderAsync2("376", "楽天"));
+        }
 
-            //Task.Run(() => ShosekiAsync());
-            //Task.Run(() => HogeAsync());
-
+        private void button3_Click(object sender, EventArgs e)
+        {
             Task.Run(() => BaseBallPitcherAsync2("1", "巨人"));
             Task.Run(() => BaseBallPitcherAsync2("2", "ヤクルト"));
             Task.Run(() => BaseBallPitcherAsync2("3", "横浜"));
