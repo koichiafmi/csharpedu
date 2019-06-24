@@ -53,17 +53,17 @@ namespace SpeechApp1
         private void logTextBox1Write(string txt)
         {
             this.logTextBox1.Text += (txt + Environment.NewLine);
+            this.logTextBox1.SelectionStart = this.logTextBox1.TextLength;
+            this.logTextBox1.ScrollToCaret();
         }
 
         private void AddGrammar()
         {
-            SpeechRecognition.AddGrammar("weather", new string[] { "今日もイイ天気" });
-
-            string[] words = new string[] { "オロナイン", "ドロヘドロ", "焼きそば", "ニュートリノ" };
+            string[] words = new string[] { "赤", "白", "黄", "ピンク" };
             SpeechRecognition.AddGrammar("words", words);
 
             Choices choices1 = new Choices();
-            choices1.Add(new string[] { "殲滅戦", "電撃戦", "打撃戦", "防衛戦", "包囲戦", "突破戦", "退却戦", "掃討戦", "撤退戦" });
+            choices1.Add(new string[] { "カレーライス", "ラーメン", "すし", "そば", "ハンバーグ", "スパゲッティ", "うどん", "ピザ" });
             GrammarBuilder grammarBuilder1 = new GrammarBuilder();
             grammarBuilder1.Append(choices1);
             grammarBuilder1.Append("が好きだ");
