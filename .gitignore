@@ -1,9 +1,0 @@
-﻿################################################################################
-# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
-################################################################################
-
-/.vs
-/DbMultiTool/obj
-/DbMultiTool/DbMultiTool.csproj.user
-/packages
-/DbMultiTool/bin/Debug

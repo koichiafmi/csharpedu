@@ -1,0 +1,12 @@
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\bin\Debug\CalcBowlingScore.exe.config
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\bin\Debug\CalcBowlingScore.exe
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\bin\Debug\CalcBowlingScore.pdb
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.FlameControl.resources
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.Properties.Resources.resources
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.csproj.GenerateResource.cache
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.exe
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.pdb
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.FlameFinalControl.resources
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.ThrowControl.resources
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.ThrowFinalControl.resources
+E:\勉強会\CSharp勉強会\CsharpEdu\CalcBowlingScore\CalcBowlingScore\obj\Debug\CalcBowlingScore.MainForm.resources
