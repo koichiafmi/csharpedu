@@ -1,6 +1,6 @@
 ﻿namespace CalcBowlingScore
 {
-    partial class FlameControl
+    partial class FrameControl
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -88,7 +88,7 @@
             this.throwControl.Size = new System.Drawing.Size(100, 70);
             this.throwControl.TabIndex = 2;
             // 
-            // FlameControl
+            // FrameControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -99,7 +99,7 @@
             this.Controls.Add(this.labelScore);
             this.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "FlameControl";
+            this.Name = "FrameControl";
             this.Size = new System.Drawing.Size(100, 180);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThrow1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThrow2)).EndInit();

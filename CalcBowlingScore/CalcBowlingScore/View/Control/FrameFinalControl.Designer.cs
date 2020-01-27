@@ -1,6 +1,6 @@
 ﻿namespace CalcBowlingScore
 {
-    partial class FlameFinalControl
+    partial class FrameFinalControl
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -66,12 +66,12 @@
             this.throwFinalControl.Size = new System.Drawing.Size(100, 70);
             this.throwFinalControl.TabIndex = 2;
             // 
-            // FlameFinalControl
+            // FrameFinalControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.throwFinalControl);
             this.Controls.Add(this.pictureBoxThrow3);
-            this.Name = "FlameFinalControl";
+            this.Name = "FrameFinalControl";
             this.Size = new System.Drawing.Size(100, 180);
             this.Controls.SetChildIndex(this.labelScore, 0);
             this.Controls.SetChildIndex(this.pictureBoxThrow1, 0);

@@ -21,7 +21,7 @@
             return new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
         }
 
-        public static int[] CreatePinsPerFlame()
+        public static int[] CreatePinsPerFrame()
         {
             return new int[] { -1, -1, -1 };
         }

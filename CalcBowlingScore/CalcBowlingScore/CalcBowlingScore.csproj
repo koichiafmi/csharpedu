@@ -50,17 +50,17 @@
     <Compile Include="Controller\ScoreController.cs" />
     <Compile Include="Model\ScoreData.cs" />
     <Compile Include="Model\ThrowData.cs" />
-    <Compile Include="View\Control\FlameControl.cs">
+    <Compile Include="View\Control\FrameControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Control\FlameControl.Designer.cs">
-      <DependentUpon>FlameControl.cs</DependentUpon>
+    <Compile Include="View\Control\FrameControl.Designer.cs">
+      <DependentUpon>FrameControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Control\FlameFinalControl.cs">
+    <Compile Include="View\Control\FrameFinalControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Control\FlameFinalControl.Designer.cs">
-      <DependentUpon>FlameFinalControl.cs</DependentUpon>
+    <Compile Include="View\Control\FrameFinalControl.Designer.cs">
+      <DependentUpon>FrameFinalControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form\MainForm.cs">
       <SubType>Form</SubType>
@@ -82,11 +82,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\Control\FlameControl.resx">
-      <DependentUpon>FlameControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Control\FrameControl.resx">
+      <DependentUpon>FrameControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Control\FlameFinalControl.resx">
-      <DependentUpon>FlameFinalControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Control\FrameFinalControl.resx">
+      <DependentUpon>FrameFinalControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

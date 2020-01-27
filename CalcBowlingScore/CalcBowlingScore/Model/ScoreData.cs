@@ -13,7 +13,7 @@
 
         public void InitializePins()
         {
-            this.Pins = Common.CreatePinsPerFlame();
+            this.Pins = Common.CreatePinsPerFrame();
         }
 
         public void SetScore(ThrowData throwData)

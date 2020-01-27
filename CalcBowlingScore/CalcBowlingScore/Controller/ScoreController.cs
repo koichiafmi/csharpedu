@@ -16,16 +16,16 @@ namespace CalcBowlingScore
         {
             this.scoreDataList = new List<ScoreData>()
             {
-                new ScoreData(1, Common.CreatePinsPerFlame()),
-                new ScoreData(2, Common.CreatePinsPerFlame()),
-                new ScoreData(3, Common.CreatePinsPerFlame()),
-                new ScoreData(4, Common.CreatePinsPerFlame()),
-                new ScoreData(5, Common.CreatePinsPerFlame()),
-                new ScoreData(6, Common.CreatePinsPerFlame()),
-                new ScoreData(7, Common.CreatePinsPerFlame()),
-                new ScoreData(8, Common.CreatePinsPerFlame()),
-                new ScoreData(9, Common.CreatePinsPerFlame()),
-                new ScoreData(10, Common.CreatePinsPerFlame())
+                new ScoreData(1, Common.CreatePinsPerFrame()),
+                new ScoreData(2, Common.CreatePinsPerFrame()),
+                new ScoreData(3, Common.CreatePinsPerFrame()),
+                new ScoreData(4, Common.CreatePinsPerFrame()),
+                new ScoreData(5, Common.CreatePinsPerFrame()),
+                new ScoreData(6, Common.CreatePinsPerFrame()),
+                new ScoreData(7, Common.CreatePinsPerFrame()),
+                new ScoreData(8, Common.CreatePinsPerFrame()),
+                new ScoreData(9, Common.CreatePinsPerFrame()),
+                new ScoreData(10, Common.CreatePinsPerFrame())
             };
         }
 
@@ -36,15 +36,15 @@ namespace CalcBowlingScore
 
         public void SetPins(int index, ThrowData throwData)
         {
-            this.GetScoreInFlame(index).SetScore(throwData);
+            this.GetScoreInFrame(index).SetScore(throwData);
         }
 
-        public int GetTotalPinsInFlame(int index)
+        public int GetTotalPinsInFrame(int index)
         {
-            return this.GetScoreInFlame(index).Pins.Where(e => e >= 0).Sum();
+            return this.GetScoreInFrame(index).Pins.Where(e => e >= 0).Sum();
         }
 
-        private ScoreData GetScoreInFlame(int index)
+        private ScoreData GetScoreInFrame(int index)
         {
             return this.scoreDataList.Find(e => e.Index == index);
         }
@@ -100,9 +100,9 @@ namespace CalcBowlingScore
             return scoreTextList;           
         }
 
-        private static int getScore(int[] scoreArray, int flameIndex, int currentScore)
+        private static int getScore(int[] scoreArray, int frameIndex, int currentScore)
         {
-            int index = (2 * (flameIndex - 1));
+            int index = (2 * (frameIndex - 1));
             int score = currentScore;
 
             // 1投目
@@ -118,7 +118,7 @@ namespace CalcBowlingScore
             }
 
             // 3投目（フレーム10のみ）
-            if (flameIndex == 10)
+            if (frameIndex == 10)
             {
                 if (scoreArray[index + 2] >= 0)
                 {
@@ -127,7 +127,7 @@ namespace CalcBowlingScore
             }
 
             // フレーム1 ～ フレーム9
-            if (flameIndex < 10)
+            if (frameIndex < 10)
             {
                 // 1投目がストライク
                 if (scoreArray[index] == 10)

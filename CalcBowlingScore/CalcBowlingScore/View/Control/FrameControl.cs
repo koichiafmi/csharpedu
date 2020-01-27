@@ -1,20 +1,34 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace CalcBowlingScore
 {
-    public partial class FlameFinalControl : FlameControl
+    public partial class FrameControl : UserControl
     {
-        public FlameFinalControl() : base()
+        public EventHandler UpdateScoreRequest = null;
+
+        protected int index;
+        protected ScoreController scoreController;
+
+
+        public FrameControl()
         {
             InitializeComponent();
 
-            if (this.throwFinalControl.Thrown == null)
+            if (this.throwControl.Thrown == null)
             {
-                this.throwFinalControl.Thrown += this.thrown;
+                this.throwControl.Thrown += this.thrown;
             }
         }
 
-        public override void Initialize()
+        public void Setup(int idx, ScoreController sc)
+        {
+            this.index = idx;
+            this.scoreController = sc;
+        }
+
+        public virtual void Initialize()
         {
             if (this.pictureBoxThrow1.Image != null)
             {
@@ -28,25 +42,36 @@ namespace CalcBowlingScore
                 this.pictureBoxThrow2.Image = null;
             }
 
-            if (this.pictureBoxThrow3.Image != null)
-            {
-                this.pictureBoxThrow3.Image.Dispose();
-                this.pictureBoxThrow3.Image = null;
-            }
-
             this.labelScore.Text = string.Empty;
 
-            this.throwFinalControl.Initialize();
+            this.throwControl.Initialize();
         }
 
-        public override void Finished()
+        public void SetScore(string score)
         {
-            this.throwFinalControl.Finished();
+            this.labelScore.Text = score;
         }
 
-        public override Image getScoreImage(int throwCount, int pinCount)
+        public virtual void Finished()
         {
-            int totalPins = this.scoreController.GetTotalPinsInFlame(this.index);
+            this.throwControl.Finished();
+        }
+
+        protected void thrown(object sender, ThrowData e)
+        {
+            this.scoreController.SetPins(this.index, e);
+            Image image = this.getScoreImage(e.ThrowCount, e.Pins);
+            this.setScoreImage(e.ThrowCount, image);
+
+            if (this.UpdateScoreRequest != null)
+            {
+                this.UpdateScoreRequest(this, EventArgs.Empty);
+            }
+        }
+
+        public virtual Image getScoreImage(int throwCount, int pinCount)
+        {
+            int totalPins = this.scoreController.GetTotalPinsInFrame(this.index);
             var path = string.Empty;
 
             if (pinCount == 9)
@@ -99,35 +124,9 @@ namespace CalcBowlingScore
             }
             else if (throwCount == 2)
             {
-                if (totalPins == 20)
-                {
-                    path = Common.ImageStrike;
-                }
-                else if (totalPins == 10)
+                if (totalPins == 10)
                 {
                     path = Common.ImageSpare;
-                }
-                else if (pinCount == 0)
-                {
-                    path = Common.ImageBar;
-                }
-            }
-            else if (throwCount == 3)
-            {
-                if (totalPins == 30)
-                {
-                    path = Common.ImageStrike;
-                }
-                else if (totalPins == 20)
-                {
-                    if (pinCount == 10)
-                    {
-                        path = Common.ImageStrike;
-                    }
-                    else
-                    {
-                        path = Common.ImageSpare;
-                    }
                 }
                 else if (pinCount == 0)
                 {
@@ -145,7 +144,7 @@ namespace CalcBowlingScore
             }
         }
 
-        protected override void setScoreImage(int throwCount, Image image)
+        protected virtual void setScoreImage(int throwCount, Image image)
         {
             if (throwCount == 1)
             {
@@ -166,16 +165,6 @@ namespace CalcBowlingScore
                 }
 
                 this.pictureBoxThrow2.Image = image;
-            }
-            else if (throwCount == 3)
-            {
-                if (this.pictureBoxThrow3.Image != null)
-                {
-                    this.pictureBoxThrow3.Image.Dispose();
-                    this.pictureBoxThrow3.Image = null;
-                }
-
-                this.pictureBoxThrow3.Image = image;
             }
         }
     }

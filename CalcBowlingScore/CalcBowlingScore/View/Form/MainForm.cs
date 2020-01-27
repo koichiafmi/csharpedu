@@ -7,21 +7,21 @@ namespace CalcBowlingScore
     public partial class MainForm : Form
     {
         private ScoreController scoreController;
-        private List<FlameControl> flameControls;
+        private List<FrameControl> frameControls;
 
         public MainForm()
         {
             InitializeComponent();
 
             this.scoreController = new ScoreController();
-            this.createFlames();
-            this.setupFlames();
+            this.createFrames();
+            this.setupFrames();
         }
 
         private void buttonGameStart_Click(object sender, EventArgs e)
         {
             this.SuspendLayout();
-            this.flameControls.ForEach(f => f.Initialize());
+            this.frameControls.ForEach(f => f.Initialize());
             this.scoreController.Initialize();
             this.ResumeLayout();
         }
@@ -29,42 +29,42 @@ namespace CalcBowlingScore
         private void buttonGameEnd_Click(object sender, EventArgs e)
         {
             this.SuspendLayout();
-            this.flameControls.ForEach(f => f.Finished());
+            this.frameControls.ForEach(f => f.Finished());
             this.ResumeLayout();
         }
 
-        private void createFlames()
+        private void createFrames()
         {
-            this.flameControls = new List<FlameControl>()
+            this.frameControls = new List<FrameControl>()
             {
-                this.flameControl1,
-                this.flameControl2,
-                this.flameControl3,
-                this.flameControl4,
-                this.flameControl5,
-                this.flameControl6,
-                this.flameControl7,
-                this.flameControl8,
-                this.flameControl9,
-                this.flameControl10,
+                this.frameControl1,
+                this.frameControl2,
+                this.frameControl3,
+                this.frameControl4,
+                this.frameControl5,
+                this.frameControl6,
+                this.frameControl7,
+                this.frameControl8,
+                this.frameControl9,
+                this.frameControl10,
             };
         }
 
-        private void setupFlames()
+        private void setupFrames()
         {
-            for (var i = 0; i < this.flameControls.Count; i++)
+            for (var i = 0; i < this.frameControls.Count; i++)
             {
-                this.flameControls[i].Setup((i + 1), this.scoreController);
-                this.flameControls[i].UpdateScoreRequest += this.SetScoresPerFlame;
+                this.frameControls[i].Setup((i + 1), this.scoreController);
+                this.frameControls[i].UpdateScoreRequest += this.SetScoresPerFrame;
             }
         }
 
-        private void SetScoresPerFlame(object sender, EventArgs e)
+        private void SetScoresPerFrame(object sender, EventArgs e)
         {
             List<string> scores = this.scoreController.GetScores();
-            for (var i = 0; i < this.flameControls.Count; i++)
+            for (var i = 0; i < this.frameControls.Count; i++)
             {
-                this.flameControls[i].SetScore(scores[i]);
+                this.frameControls[i].SetScore(scores[i]);
             }
         }
     }

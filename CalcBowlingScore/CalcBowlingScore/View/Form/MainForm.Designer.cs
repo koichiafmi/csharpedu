@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.buttonGameStart = new System.Windows.Forms.Button();
-            this.flameControl1 = new CalcBowlingScore.FlameControl();
-            this.flameControl2 = new CalcBowlingScore.FlameControl();
-            this.flameControl3 = new CalcBowlingScore.FlameControl();
-            this.flameControl4 = new CalcBowlingScore.FlameControl();
-            this.flameControl5 = new CalcBowlingScore.FlameControl();
-            this.flameControl6 = new CalcBowlingScore.FlameControl();
-            this.flameControl7 = new CalcBowlingScore.FlameControl();
-            this.flameControl8 = new CalcBowlingScore.FlameControl();
-            this.flameControl9 = new CalcBowlingScore.FlameControl();
-            this.flameControl10 = new CalcBowlingScore.FlameFinalControl();
+            this.frameControl1 = new CalcBowlingScore.FrameControl();
+            this.frameControl2 = new CalcBowlingScore.FrameControl();
+            this.frameControl3 = new CalcBowlingScore.FrameControl();
+            this.frameControl4 = new CalcBowlingScore.FrameControl();
+            this.frameControl5 = new CalcBowlingScore.FrameControl();
+            this.frameControl6 = new CalcBowlingScore.FrameControl();
+            this.frameControl7 = new CalcBowlingScore.FrameControl();
+            this.frameControl8 = new CalcBowlingScore.FrameControl();
+            this.frameControl9 = new CalcBowlingScore.FrameControl();
+            this.frameControl10 = new CalcBowlingScore.FrameFinalControl();
             this.buttonGameEnd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -52,105 +52,105 @@
             this.buttonGameStart.UseVisualStyleBackColor = true;
             this.buttonGameStart.Click += new System.EventHandler(this.buttonGameStart_Click);
             // 
-            // flameControl1
+            // frameControl1
             // 
-            this.flameControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl1.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl1.Location = new System.Drawing.Point(0, 0);
-            this.flameControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl1.Name = "flameControl1";
-            this.flameControl1.Size = new System.Drawing.Size(100, 180);
-            this.flameControl1.TabIndex = 21;
+            this.frameControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl1.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl1.Location = new System.Drawing.Point(0, 0);
+            this.frameControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl1.Name = "frameControl1";
+            this.frameControl1.Size = new System.Drawing.Size(100, 180);
+            this.frameControl1.TabIndex = 21;
             // 
-            // flameControl2
+            // frameControl2
             // 
-            this.flameControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl2.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl2.Location = new System.Drawing.Point(99, 0);
-            this.flameControl2.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl2.Name = "flameControl2";
-            this.flameControl2.Size = new System.Drawing.Size(100, 180);
-            this.flameControl2.TabIndex = 22;
+            this.frameControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl2.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl2.Location = new System.Drawing.Point(99, 0);
+            this.frameControl2.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl2.Name = "frameControl2";
+            this.frameControl2.Size = new System.Drawing.Size(100, 180);
+            this.frameControl2.TabIndex = 22;
             // 
-            // flameControl3
+            // frameControl3
             // 
-            this.flameControl3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl3.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl3.Location = new System.Drawing.Point(198, 0);
-            this.flameControl3.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl3.Name = "flameControl3";
-            this.flameControl3.Size = new System.Drawing.Size(100, 180);
-            this.flameControl3.TabIndex = 23;
+            this.frameControl3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl3.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl3.Location = new System.Drawing.Point(198, 0);
+            this.frameControl3.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl3.Name = "frameControl3";
+            this.frameControl3.Size = new System.Drawing.Size(100, 180);
+            this.frameControl3.TabIndex = 23;
             // 
-            // flameControl4
+            // frameControl4
             // 
-            this.flameControl4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl4.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl4.Location = new System.Drawing.Point(297, 0);
-            this.flameControl4.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl4.Name = "flameControl4";
-            this.flameControl4.Size = new System.Drawing.Size(100, 180);
-            this.flameControl4.TabIndex = 24;
+            this.frameControl4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl4.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl4.Location = new System.Drawing.Point(297, 0);
+            this.frameControl4.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl4.Name = "frameControl4";
+            this.frameControl4.Size = new System.Drawing.Size(100, 180);
+            this.frameControl4.TabIndex = 24;
             // 
-            // flameControl5
+            // frameControl5
             // 
-            this.flameControl5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl5.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl5.Location = new System.Drawing.Point(396, 0);
-            this.flameControl5.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl5.Name = "flameControl5";
-            this.flameControl5.Size = new System.Drawing.Size(100, 180);
-            this.flameControl5.TabIndex = 25;
+            this.frameControl5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl5.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl5.Location = new System.Drawing.Point(396, 0);
+            this.frameControl5.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl5.Name = "frameControl5";
+            this.frameControl5.Size = new System.Drawing.Size(100, 180);
+            this.frameControl5.TabIndex = 25;
             // 
-            // flameControl6
+            // frameControl6
             // 
-            this.flameControl6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl6.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl6.Location = new System.Drawing.Point(495, 0);
-            this.flameControl6.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl6.Name = "flameControl6";
-            this.flameControl6.Size = new System.Drawing.Size(100, 180);
-            this.flameControl6.TabIndex = 26;
+            this.frameControl6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl6.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl6.Location = new System.Drawing.Point(495, 0);
+            this.frameControl6.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl6.Name = "frameControl6";
+            this.frameControl6.Size = new System.Drawing.Size(100, 180);
+            this.frameControl6.TabIndex = 26;
             // 
-            // flameControl7
+            // frameControl7
             // 
-            this.flameControl7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl7.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl7.Location = new System.Drawing.Point(594, 0);
-            this.flameControl7.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl7.Name = "flameControl7";
-            this.flameControl7.Size = new System.Drawing.Size(100, 180);
-            this.flameControl7.TabIndex = 27;
+            this.frameControl7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl7.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl7.Location = new System.Drawing.Point(594, 0);
+            this.frameControl7.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl7.Name = "frameControl7";
+            this.frameControl7.Size = new System.Drawing.Size(100, 180);
+            this.frameControl7.TabIndex = 27;
             // 
-            // flameControl8
+            // frameControl8
             // 
-            this.flameControl8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl8.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl8.Location = new System.Drawing.Point(693, 0);
-            this.flameControl8.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl8.Name = "flameControl8";
-            this.flameControl8.Size = new System.Drawing.Size(100, 180);
-            this.flameControl8.TabIndex = 28;
+            this.frameControl8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl8.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl8.Location = new System.Drawing.Point(693, 0);
+            this.frameControl8.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl8.Name = "frameControl8";
+            this.frameControl8.Size = new System.Drawing.Size(100, 180);
+            this.frameControl8.TabIndex = 28;
             // 
-            // flameControl9
+            // frameControl9
             // 
-            this.flameControl9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl9.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl9.Location = new System.Drawing.Point(792, 0);
-            this.flameControl9.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl9.Name = "flameControl9";
-            this.flameControl9.Size = new System.Drawing.Size(100, 180);
-            this.flameControl9.TabIndex = 29;
+            this.frameControl9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl9.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl9.Location = new System.Drawing.Point(792, 0);
+            this.frameControl9.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl9.Name = "frameControl9";
+            this.frameControl9.Size = new System.Drawing.Size(100, 180);
+            this.frameControl9.TabIndex = 29;
             // 
-            // flameControl10
+            // frameControl10
             // 
-            this.flameControl10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flameControl10.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.flameControl10.Location = new System.Drawing.Point(891, 0);
-            this.flameControl10.Margin = new System.Windows.Forms.Padding(0);
-            this.flameControl10.Name = "flameControl10";
-            this.flameControl10.Size = new System.Drawing.Size(100, 180);
-            this.flameControl10.TabIndex = 30;
+            this.frameControl10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameControl10.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.frameControl10.Location = new System.Drawing.Point(891, 0);
+            this.frameControl10.Margin = new System.Windows.Forms.Padding(0);
+            this.frameControl10.Name = "frameControl10";
+            this.frameControl10.Size = new System.Drawing.Size(100, 180);
+            this.frameControl10.TabIndex = 30;
             // 
             // buttonGameEnd
             // 
@@ -167,16 +167,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(991, 243);
             this.Controls.Add(this.buttonGameEnd);
-            this.Controls.Add(this.flameControl10);
-            this.Controls.Add(this.flameControl9);
-            this.Controls.Add(this.flameControl8);
-            this.Controls.Add(this.flameControl7);
-            this.Controls.Add(this.flameControl6);
-            this.Controls.Add(this.flameControl5);
-            this.Controls.Add(this.flameControl4);
-            this.Controls.Add(this.flameControl3);
-            this.Controls.Add(this.flameControl2);
-            this.Controls.Add(this.flameControl1);
+            this.Controls.Add(this.frameControl10);
+            this.Controls.Add(this.frameControl9);
+            this.Controls.Add(this.frameControl8);
+            this.Controls.Add(this.frameControl7);
+            this.Controls.Add(this.frameControl6);
+            this.Controls.Add(this.frameControl5);
+            this.Controls.Add(this.frameControl4);
+            this.Controls.Add(this.frameControl3);
+            this.Controls.Add(this.frameControl2);
+            this.Controls.Add(this.frameControl1);
             this.Controls.Add(this.buttonGameStart);
             this.Name = "Form1";
             this.Text = "Bowling game";
@@ -186,16 +186,16 @@
 
         #endregion
         private System.Windows.Forms.Button buttonGameStart;
-        private FlameControl flameControl1;
-        private FlameControl flameControl2;
-        private FlameControl flameControl3;
-        private FlameControl flameControl4;
-        private FlameControl flameControl5;
-        private FlameControl flameControl6;
-        private FlameControl flameControl7;
-        private FlameControl flameControl8;
-        private FlameControl flameControl9;
-        private FlameFinalControl flameControl10;
+        private FrameControl frameControl1;
+        private FrameControl frameControl2;
+        private FrameControl frameControl3;
+        private FrameControl frameControl4;
+        private FrameControl frameControl5;
+        private FrameControl frameControl6;
+        private FrameControl frameControl7;
+        private FrameControl frameControl8;
+        private FrameControl frameControl9;
+        private FrameFinalControl frameControl10;
         private System.Windows.Forms.Button buttonGameEnd;
     }
 }
