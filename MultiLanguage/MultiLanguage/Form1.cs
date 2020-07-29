@@ -63,12 +63,18 @@ namespace MultiLanguage
 
         private void radioButtonJapanese_CheckedChanged(object sender, EventArgs e)
         {
-            this.changeLanguage("ja");
+            if ((sender as RadioButton).Checked)
+            {
+                this.changeLanguage("ja");
+            }
         }
 
         private void radioButtonEnglish_CheckedChanged(object sender, EventArgs e)
         {
-            this.changeLanguage("en");
+            if ((sender as RadioButton).Checked)
+            {
+                this.changeLanguage("en");
+            }
         }
 
         private void changeLanguage(string language)
@@ -80,7 +86,10 @@ namespace MultiLanguage
 
         private void button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Empty);
+            MessageBox.Show(Resources.Msg_Sample,
+                            Resources.Msg_Title,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
         }
 
         private void textBoxNumber_Validated(object sender, EventArgs e)

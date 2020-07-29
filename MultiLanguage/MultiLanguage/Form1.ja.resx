@@ -123,4 +123,40 @@
   <data name="button.Text" xml:space="preserve">
     <value>メッセージ表示</value>
   </data>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>列1</value>
+  </data>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value>列2</value>
+  </data>
+  <data name="Column3.HeaderText" xml:space="preserve">
+    <value>列3</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="groupBox.Text" xml:space="preserve">
+    <value>使用言語</value>
+  </data>
+  <data name="labelName.Text" xml:space="preserve">
+    <value>氏名</value>
+  </data>
+  <data name="labelNumber.Text" xml:space="preserve">
+    <value>番号</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>メニュー1</value>
+  </data>
+  <data name="radioButtonEnglish.Text" xml:space="preserve">
+    <value>英語</value>
+  </data>
+  <data name="radioButtonJapanese.Text" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
 </root>
